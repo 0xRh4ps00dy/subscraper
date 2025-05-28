@@ -67,10 +67,10 @@ def find_scripts(url):
             elif "http" not in script_src:
                 parsed_url = url + "/" + script_src
             else:
-                parsed_url = re.search("[a-zA-Z0-9-_.]+\.[a-zA-Z]{2,}", script_src).group()
+                parsed_url = re.search(r"[a-zA-Z0-9-_.]+\.[a-zA-Z]{2,}", script_src).group()
             try:
                 find_subdomains(requests.get('http://' + parsed_url, verify=False, headers=HEADERS).text, url)
-                src_url = re.search("[a-zA-Z0-9-_.]+\.[a-zA-Z]{2,}", script_src).group()
+                src_url = re.search(r"[a-zA-Z0-9-_.]+\.[a-zA-Z]{2,}", script_src).group()
                 if src_url not in SUBDOMAINS_ENUMERATED:
                     SUBDOMAINS_ENUMERATED.append(src_url)
             except:
@@ -134,21 +134,21 @@ def find_subdomains(script, url):
 
 
 def ascii_banner():
-    ctext("                      `. ___", "red")
-    ctext("                    __,' __`.                _..----....____", "red")
-    ctext("        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'", "red")
-    ctext("  _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'", "red")
-    ctext(",'________________                          \`-._`-','", "red")
-    ctext(" `._              ```````````------...___   '-.._'-:", "red")
-    ctext("    ```--.._      ,.                     ````--...__\-.", "red")
-    ctext("            `.--. `-`                       ____    |  |`", "red")
-    ctext("              `. `.                       ,'`````.  ;  ;`", "red")
-    ctext("                `._`.        __________   `.      \'__/`", "red")
-    ctext("                   `-:._____/______/___/____`.     \\  `", "red")
-    ctext("         SUBSCRAPER            |       `._    `.    \\", "red")
-    ctext("         SUBSCRAPER            `._________`-.   `.   `.___", "red")
-    ctext("         SUBSCRAPER                v1.0.0         `------'`", "red")
-    ctext("\nSubdomains Found:\n")
+    ctext(r"                      `. ___", "red")
+    ctext(r"                    __,' __`.                _..----....____", "red")
+    ctext(r"        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'", "red")
+    ctext(r"  _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'", "red")
+    ctext(r",'________________                          \`-._`-','", "red")
+    ctext(r" `._              ```````````------...___   '-.._'-:", "red")
+    ctext(r"    ```--.._      ,.                     ````--...__\-.", "red")
+    ctext(r"            `.--. `-`                       ____    |  |`", "red")
+    ctext(r"              `. `.                       ,'`````.  ;  ;`", "red")
+    ctext(r"                `._`.        __________   `.      \'__/`", "red")
+    ctext(r"                   `-:._____/______/___/____`.     \\  `", "red")
+    ctext(r"         SUBSCRAPER            |       `._    `.    \\", "red")
+    ctext(r"         SUBSCRAPER            `._________`-.   `.   `.___", "red")
+    ctext(r"         SUBSCRAPER                v1.0.0         `------'`", "red")
+    ctext(r"\nSubdomains Found:\n")
 
 
 def main():
